@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-31T12:55:18.038Z",
+  "stores": {
+    "users.json": [
+      {
+        "id": 1,
+        "username": "admin",
+        "email": "admin@shivshaktiindustries.com",
+        "password_hash": "067ff1723f0e2e20741be42d730e60f2:365f2468acb3c09ab4bce69c871f96c66c99616e07829e1ac775d9056378cdcacad874f88aa9f441803311243eb0744d0e17135ada0342c20d7580134e65cfee",
+        "role": "superadmin",
+        "reset_token": null,
+        "reset_token_expiry": null,
+        "last_login": null,
+        "created_at": "2026-10-31T12:20:41.926Z"
+      }
+    ]
+  }
+}

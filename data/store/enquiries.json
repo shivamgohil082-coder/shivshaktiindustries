@@ -1,0 +1,32 @@
+[
+  {
+    "id": 2,
+    "reference_no": "SSI-GENERAL-42459234",
+    "type": "General",
+    "full_name": "y6t5gu hytv",
+    "email": "mohitnena264@gmail.com",
+    "phone": "422217278268285",
+    "subject": "General Inquiry",
+    "message": "fgthug",
+    "status": "Completed",
+    "admin_notes": "",
+    "ip_address": "2409:40c0:11bf:3bea:48e0:d6f7:a849:f2c8",
+    "created_at": "2026-10-31T16:25:54.245Z",
+    "updated_at": "2026-10-31T16:27:22.944Z"
+  },
+  {
+    "id": 1,
+    "reference_no": "SSI-GENERAL-29144151",
+    "type": "General",
+    "full_name": "y6t5gu hytv",
+    "email": "mohitnena264@gmail.com",
+    "phone": "422217278268285",
+    "subject": "General Inquiry",
+    "message": "fhbvhmf",
+    "status": "New",
+    "admin_notes": "",
+    "ip_address": "2409:40c0:11bf:3bea:48e0:d6f7:a849:f2c8",
+    "created_at": "2026-10-31T14:23:22.914Z",
+    "updated_at": "2026-10-31T14:23:22.914Z"
+  }
+]

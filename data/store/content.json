@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "section_key": "home_hero",
+    "title": "Precision Engineering Solutions.",
+    "subtitle": "Premium Industrial Manufacturing",
+    "content": "We manufacture precision components according to customer drawings, technical specifications, and samples with micron-level tolerances.",
+    "updated_at": "2026-10-31T13:35:56.809Z"
+  },
+  {
+    "id": 2,
+    "section_key": "company_info",
+    "title": "Shiv Shakti Industries",
+    "subtitle": "Leading Manufacturer of Precision Engineering Parts",
+    "content": "C1-677, Makarpura GIDC, Vadodara, 390010, Gujarat, India. Phone: +91 92136 62579. Email: info@shivshaktiindustries.org",
+    "updated_at": "2026-10-31T13:35:56.809Z"
+  },
+  {
+    "id": 3,
+    "section_key": "quality_promise",
+    "title": "Committed to Excellence in CNC & VMC Machining",
+    "subtitle": "Zero Defects Quality Management",
+    "content": "Every batch of raw materials is verified for chemical composition and 100% final visual and dimensional inspection is conducted before dispatch.",
+    "updated_at": "2026-10-31T13:35:56.809Z"
+  }
+]

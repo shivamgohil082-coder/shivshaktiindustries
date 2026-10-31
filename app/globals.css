@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@source "../app/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}";
+
+@theme {
+  --color-primary: #aa0000;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1a1a1a;
+  --color-secondary-foreground: #fafafa;
+  --color-accent: #9ca3af;
+  --color-accent-foreground: #1a1a1a;
+  
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-display: "Sora", sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+
+  --primary: #aa0000;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #1a1a1a;
+  --secondary-foreground: #fafafa;
+
+  --accent: #9ca3af;
+  --accent-foreground: #1a1a1a;
+
+  --border: #e5e7eb;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(26, 26, 26, 0.1);
+}
+
+html {
+  scroll-behavior: auto; /* Handled by Lenis */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.container-custom {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 0 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+:is(
+  .glass-card,
+  div[class*="rounded-"][class*="shadow-"],
+  div[class*="rounded-"][class*="border-"][class*="bg-white"][class*="p-"]
+) {
+  transition:
+    translate 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (hover: hover) {
+  :is(
+    .glass-card,
+    div[class*="rounded-"][class*="shadow-"],
+    div[class*="rounded-"][class*="border-"][class*="bg-white"][class*="p-"]
+  ):hover {
+    translate: 0 -4px;
+    box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.10), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  :is(
+    .glass-card,
+    div[class*="rounded-"][class*="shadow-"],
+    div[class*="rounded-"][class*="border-"][class*="bg-white"][class*="p-"]
+  ):hover :is(h2, h3, h4) {
+    color: #f97316;
+    transition: color 250ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .glass-card,
+    div[class*="rounded-"][class*="shadow-"],
+    div[class*="rounded-"][class*="border-"][class*="bg-white"][class*="p-"]
+  ) {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Magnetic Button Utility */
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+

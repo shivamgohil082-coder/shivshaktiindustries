@@ -183,7 +183,7 @@ assertTest(`Non-admin role (customer) attempting ${ownerPath}/products redirects
 // TEST SUITE 4: Normal Customer Public Access
 // ----------------------------------------------------------------------------
 console.log('\n[4/5] Testing Normal Customer Public Access (Zero Disruption)');
-const publicPages = ['/', '/products', '/services', '/capabilities', '/industries', '/quality', '/contact'];
+const publicPages = ['/', '/products', '/services', '/industries', '/quality', '/contact'];
 publicPages.forEach(p => {
   const r = simulateMiddleware(p, null);
   assertTest(`Public page ${p} is unrestricted (200 OK)`, r.status === 200 && r.action === 'ALLOW');

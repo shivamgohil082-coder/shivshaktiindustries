@@ -153,10 +153,10 @@ export default function ServicesPage() {
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link
-              href="/capabilities"
+              href="/products"
               className="font-semibold text-primary underline-offset-4 hover:underline"
             >
-              Review capabilities and listed materials
+              Browse manufactured products and materials
             </Link>
             <Link
               href="/quality"

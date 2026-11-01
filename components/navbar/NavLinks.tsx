@@ -12,10 +12,6 @@ export const navLinks = [
     href: "/services",
   },
   {
-    title: "Capabilities",
-    href: "/capabilities",
-  },
-  {
     title: "Industries",
     href: "/industries",
   },

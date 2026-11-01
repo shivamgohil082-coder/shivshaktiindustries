@@ -81,7 +81,7 @@ const INDUSTRIES = [
     title: "Food Processing Machinery",
     size: "Stainless Steel Components, Precision Assemblies",
     quantity: "Standard",
-    img: "/images/industries/industri food p[rocess.webp",
+    img: "/images/industries/food-processing-machinery.webp",
     product: "Corrosion-resistant and hygienic components for food processing machinery."
   },
   {
@@ -114,7 +114,7 @@ meet the demanding standards of a broad spectrum of industrial sectors.
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
           {INDUSTRIES.map((industry, idx) => (
             <div key={idx} className="group flex flex-col rounded-2xl bg-white p-5 sm:p-6 md:p-8 shadow-md border border-gray-100 hover:border-orange-200 transition-all">
-              <div className="overflow-hidden rounded-3xl border border-gray-100">
+              <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-gray-100">
                 <Image
                   src={industry.img}
                   width={900}

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Shiv Shakti Industries',
     short_name: 'Shiv Shakti',
     description:
-      'CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...',
+      'Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Shiv Shakti Industries",
   },
   description:
-    "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
+    "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
   keywords: [
     "CNC Machining Vadodara",
     "VMC Machining Gujarat",
@@ -76,14 +76,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
     description:
-      "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
+      "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
     url: SITE_URL,
     siteName: "Shiv Shakti Industries",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/logo/logo3.jpeg",
+        url: "/images/logo.png",
         width: 800,
         height: 600,
         alt: "Shiv Shakti Industries Logo",
@@ -94,8 +94,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
     description:
-      "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
-    images: ["/images/logo/logo3.jpeg"],
+      "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
+    images: ["/images/logo.png"],
   },
   robots: {
     index: true,
@@ -118,10 +118,10 @@ const structuredSchema = {
       "@id": `${SITE_URL}/#organization`,
       name: "Shiv Shakti Industries",
       url: SITE_URL,
-      logo: `${SITE_URL}/images/logo/logo3.jpeg`,
-      image: `${SITE_URL}/images/logo/logo3.jpeg`,
+      logo: `${SITE_URL}/images/logo.png`,
+      image: `${SITE_URL}/images/logo.png`,
       description:
-        "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
+        "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
       telephone: "+91 92136 62579",
       email: "info@shivshaktiindustries.org",
       address: {
@@ -157,7 +157,7 @@ const structuredSchema = {
       url: SITE_URL,
       name: "Shiv Shakti Industries",
       description:
-        "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
+        "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
       publisher: {
         "@id": `${SITE_URL}/#organization`,
       },

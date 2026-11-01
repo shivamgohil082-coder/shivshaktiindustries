@@ -11,7 +11,7 @@ export const SITE_URL =
   localHosts.has(configuredSiteUrl.hostname)
     ? DEFAULT_SITE_URL
     : configuredSiteUrl.origin;
-const SOCIAL_IMAGE = "/images/logo/logo3.jpeg";
+const SOCIAL_IMAGE = "/images/logo.png";
 
 export function serializeJsonLd(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");

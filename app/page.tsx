@@ -7,18 +7,17 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "CNC Machining Manufacturer in Vadodara | Shiv Shakti Industries",
   description:
-    "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
+    "Shiv Shakti Industries manufactures food processing machinery and industrial equipment for efficient, reliable, and high-quality production.",
   path: "/",
   keywords: [
+    "food processing machinery",
+    "industrial equipment",
     "CNC machining manufacturer",
     "Precision CNC turned components",
     "Custom precision components manufacturer",
     "CNC machining Vadodara",
-    "CNC turning",
-    "CNC milling",
     "VMC machining",
     "sheet metal fabrication",
-    "valves flanges bearings lugs bushes",
   ],
 });
 

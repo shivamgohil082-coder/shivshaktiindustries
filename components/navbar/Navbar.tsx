@@ -20,14 +20,16 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-3"
           >
-            <Image
-              src="/images/logo/logo3.jpeg"
-              alt="Shiv Shakti Industries"
-              width={64}
-              height={64}
-              priority
-              className="h-14 md:h-16 w-auto object-contain"
-            />
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 shrink-0 flex items-center justify-center">
+              <Image
+                src="/images/logo.png"
+                alt="Shiv Shakti Industries"
+                width={64}
+                height={64}
+                priority
+                className="h-full w-full object-contain"
+              />
+            </div>
 
             <div className="flex flex-col justify-center min-w-0">
               <p className="text-lg sm:text-2xl md:text-3xl font-bold text-black leading-none tracking-tight truncate">

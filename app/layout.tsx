@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Shiv Shakti Industries",
   },
   description:
-    "Shiv Shakti Industries manufactures precision CNC turned components, VMC machined parts, and custom engineering assemblies in Vadodara, Gujarat, India.",
+    "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
   keywords: [
     "CNC Machining Vadodara",
     "VMC Machining Gujarat",
@@ -43,6 +43,11 @@ export const metadata: Metadata = {
     "Hydraulic Manifolds CNC",
     "Makarpura GIDC CNC Machine Shop",
     "Automotive Machined Parts India",
+    "CNC turning",
+    "CNC milling",
+    "VMC machining",
+    "sheet metal fabrication",
+    "valves flanges bearings lugs bushes",
   ],
   authors: [{ name: "Shiv Shakti Industries" }],
   creator: "Shiv Shakti Industries",
@@ -56,14 +61,22 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
     description:
-      "Precision CNC turned components, VMC machined parts, and custom engineering assemblies manufactured in Vadodara, Gujarat, India.",
+      "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
     url: SITE_URL,
     siteName: "Shiv Shakti Industries",
     locale: "en_IN",
@@ -81,7 +94,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
     description:
-      "Precision CNC turned components, VMC machined parts, and custom engineering assemblies in Vadodara, India.",
+      "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
     images: ["/images/logo/logo3.jpeg"],
   },
   robots: {
@@ -106,8 +119,9 @@ const structuredSchema = {
       name: "Shiv Shakti Industries",
       url: SITE_URL,
       logo: `${SITE_URL}/images/logo/logo3.jpeg`,
+      image: `${SITE_URL}/images/logo/logo3.jpeg`,
       description:
-        "Precision CNC and VMC machining, custom sheet metal works, parts assembly, and engineering solutions in Makarpura GIDC, Vadodara, Gujarat, India.",
+        "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
       telephone: "+91 92136 62579",
       email: "info@shivshaktiindustries.org",
       address: {
@@ -142,7 +156,8 @@ const structuredSchema = {
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
       name: "Shiv Shakti Industries",
-      description: "Precision CNC Machining & VMC Manufacturing Portal",
+      description:
+        "CNC turning, CNC milling, VMC machining, conventional machining, machining assemblies, sheet metal fabrication, machining of connectors and couplings, valves, flanges, bearings, lugs, Bushes and Sleeves, precision component, and many more...",
       publisher: {
         "@id": `${SITE_URL}/#organization`,
       },
@@ -161,6 +176,13 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${spaceGrotesk.className} scroll-smooth`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/icon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="msapplication-TileImage" content="/icon-192x192.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

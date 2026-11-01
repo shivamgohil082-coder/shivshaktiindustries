@@ -7,7 +7,7 @@ export default function HeroVideo() {
         muted
         playsInline
         preload="metadata"
-        src="/videos/hero.mp4"
+        src="\videos\hero.mp4"
         className="h-full w-full object-cover"
       />
     </div>

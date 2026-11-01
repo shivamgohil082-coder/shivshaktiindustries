@@ -19,6 +19,7 @@
 # Heavy media / Screencasts (Exceeding GitHub 100MB limit)
 Recording*.mp4
 *.mp4
+!public/**/*.mp4
 *.mov
 *.avi
 *.wmv

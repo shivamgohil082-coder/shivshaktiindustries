@@ -12,6 +12,10 @@ export const navLinks = [
     href: "/services",
   },
   {
+    title: "Capabilities",
+    href: "/capabilities",
+  },
+  {
     title: "Industries",
     href: "/industries",
   },
@@ -19,18 +23,10 @@ export const navLinks = [
     title: "Products",
     href: "/products",
   },
-  /*{
-    title: "Gallery",
-    href: "/gallery",
-  },*/
   {
     title: "Quality",
     href: "/quality",
   },
-  /*{
-    title: "Upload Drawing",
-    href: "/upload",
-  },*/
   {
     title: "Contact",
     href: "/contact",

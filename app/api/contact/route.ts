@@ -95,14 +95,18 @@ export async function POST(req: Request) {
     const safeSubject = escapeHtml((subject || 'General Inquiry').trim().slice(0, 150));
     const safeMessage = escapeHtml(message.trim().slice(0, 5000)).replace(/\n/g, '<br/>');
 
-    // Department-based intelligent routing:
-    // - RFQ / Request a quote -> rfq@shivshaktiindustries.org
-    // - General inquiries, job/career applications, supplier & vendor proposals -> info@shivshaktiindustries.org
+    // Department-based direct delivery (delivers directly to inbox to prevent Gmail/Cloudflare deduplication loop):
+    // - Request for Quotation (RFQ) -> rfqssi@gmail.com
+    // - General Inquiry, Job / Career, Supplier / Vendor Proposal -> infossi2512@gmail.com
     const lowerSubject = safeSubject.toLowerCase();
     const isRfq = lowerSubject.includes('rfq') || lowerSubject.includes('quotation') || lowerSubject.includes('quote');
     const recipientEmail = isRfq
-      ? (process.env.SMTP_RFQ_EMAIL || 'rfq@shivshaktiindustries.org')
-      : (process.env.SMTP_INFO_EMAIL || process.env.SMTP_TO_EMAIL || 'info@shivshaktiindustries.org');
+      ? (process.env.SMTP_RFQ_EMAIL || 'rfqssi@gmail.com')
+      : (process.env.SMTP_INFO_EMAIL || 'infossi2512@gmail.com');
+
+    const officialChannel = isRfq
+      ? 'rfq@shivshaktiindustries.org'
+      : 'info@shivshaktiindustries.org';
 
     const senderDisplay = isRfq
       ? '"Shiv Shakti Industries RFQ Desk" <rfq@shivshaktiindustries.org>'
@@ -136,61 +140,78 @@ export async function POST(req: Request) {
     });
 
     // 2. Dispatch Email Notification if SMTP is configured
-    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      // SMTP not configured yet, but enquiry is safely recorded in database
-      return NextResponse.json({
-        success: true,
-        message: 'Thank you! Your message has been received. Our team will contact you shortly.',
-        reference: recordedEnquiry.reference_no,
-      });
-    }
+    if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+      try {
+        const port = Number(process.env.SMTP_PORT) || 587;
+        const secure = process.env.SMTP_SECURE === 'true' || port === 465;
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port,
+          secure,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+          tls: {
+            rejectUnauthorized: false,
+          },
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+        });
 
-    const mailOptions = {
-      from: process.env.SMTP_FROM_EMAIL || senderDisplay,
-      to: recipientEmail,
-      replyTo: email.trim(),
-      subject: `[Web Inquiry - ${departmentLabel}] ${safeSubject} from ${safeFirst} ${safeLast}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #aa0000; color: #ffffff; padding: 18px 24px;">
-            <h2 style="margin: 0; font-size: 20px;">New Website Inquiry (${departmentLabel})</h2>
-            <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.9;">Shiv Shakti Industries — Target: ${recipientEmail}</p>
-          </div>
-          <div style="padding: 24px;">
-            <p><strong>Department:</strong> ${departmentLabel}</p>
-            <p><strong>Routed To:</strong> ${recipientEmail}</p>
-            <p><strong>Sender Name:</strong> ${safeFirst} ${safeLast}</p>
-            <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
-            <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
-            <p><strong>Subject:</strong> ${safeSubject}</p>
-            <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
-            <h4 style="margin: 0 0 8px; color: #555;">Message:</h4>
-            <div style="background-color: #f9f9f9; padding: 14px; border-radius: 6px; border-left: 3px solid #aa0000;">
-              ${safeMessage}
+        const mailOptions = {
+          from: isRfq
+            ? (process.env.SMTP_RFQ_FROM_EMAIL || senderDisplay)
+            : (process.env.SMTP_FROM_EMAIL || senderDisplay),
+          to: recipientEmail,
+          replyTo: email.trim(),
+          subject: `[Web Inquiry - ${departmentLabel}] ${safeSubject} from ${safeFirst} ${safeLast}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+              <div style="background-color: #aa0000; color: #ffffff; padding: 18px 24px;">
+                <h2 style="margin: 0; font-size: 20px;">New Website Inquiry (${departmentLabel})</h2>
+                <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.9;">Shiv Shakti Industries — Target: ${officialChannel} (${recipientEmail})</p>
+              </div>
+              <div style="padding: 24px;">
+                <p><strong>Department:</strong> ${departmentLabel}</p>
+                <p><strong>Official Channel:</strong> ${officialChannel}</p>
+                <p><strong>Delivered To:</strong> ${recipientEmail}</p>
+                <p><strong>Sender Name:</strong> ${safeFirst} ${safeLast}</p>
+                <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+                <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
+                <p><strong>Subject:</strong> ${safeSubject}</p>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
+                <h4 style="margin: 0 0 8px; color: #555;">Message:</h4>
+                <div style="background-color: #f9f9f9; padding: 14px; border-radius: 6px; border-left: 3px solid #aa0000;">
+                  ${safeMessage}
+                </div>
+              </div>
+              <div style="background-color: #f4f4f4; padding: 12px 24px; font-size: 11px; color: #777; text-align: center;">
+                Sender IP: ${clientIp} | Timestamp: ${new Date().toISOString()}
+              </div>
             </div>
-          </div>
-          <div style="background-color: #f4f4f4; padding: 12px 24px; font-size: 11px; color: #777; text-align: center;">
-            Sender IP: ${clientIp} | Timestamp: ${new Date().toISOString()}
-          </div>
-        </div>
-      `,
-    };
+          `,
+        };
 
-    await transporter.sendMail(mailOptions);
+        const info = await transporter.sendMail(mailOptions);
+        console.log(`[Contact API] Email successfully delivered to ${recipientEmail} (Message ID: ${info.messageId}) for enquiry ${recordedEnquiry.reference_no}`);
+      } catch (emailError) {
+        console.error(
+          `[Contact API] Email delivery failed for enquiry ${recordedEnquiry.reference_no} to ${recipientEmail}:`,
+          emailError instanceof Error ? emailError.message : 'Unknown error',
+        );
+      }
+    } else {
+      console.warn(
+        `[Contact API] Enquiry ${recordedEnquiry.reference_no} saved in database, but SMTP is not fully configured (SMTP_HOST=${Boolean(process.env.SMTP_HOST)}, SMTP_USER=${Boolean(process.env.SMTP_USER)}, SMTP_PASS=${Boolean(process.env.SMTP_PASS)}). Email was not sent.`,
+      );
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Thank you! Your message has been sent successfully.',
+      reference: recordedEnquiry.reference_no,
     });
   } catch (error) {
     // Log sanitized error internally without exposing details to visitor

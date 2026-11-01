@@ -1,14 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Settings2, ShieldCheck, Factory, DraftingCompass, Cpu, Layers } from "lucide-react";
+import { ArrowRight, Settings2 } from "lucide-react";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Precision Machining Services | CNC, VMC & Fabrication",
-  description: "Comprehensive precision manufacturing services: 4-Axis CNC Turning, VMC Milling, Conventional Machining, Sheet Metal Fabrication, Surface Finishing & Metrology in Vadodara.",
-  alternates: {
-    canonical: "/services",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "CNC Turning, Milling and Precision Machining Services",
+  description:
+    "CNC turning, CNC milling, VMC machining, fabrication, and custom manufacturing services for precision components in Vadodara, India.",
+  path: "/services",
+  keywords: [
+    "CNC turning manufacturer India",
+    "Custom precision components manufacturer",
+    "CNC machining services Vadodara",
+  ],
+});
 
 const SERVICES = [
   {
@@ -94,29 +99,30 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <main className="bg-gray-50 pt-24 pb-24 min-h-screen">
+    <main className="bg-gray-50 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 min-h-screen">
+      <Breadcrumbs items={[{ label: "Services", href: "/services" }]} />
       {/* Header */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">Our Services</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">Our Services</h1>
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-400">
             From raw materials to final assembly, we provide Total Engineering Solutions using state-of-the-art machinery and rigorous quality control.
           </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="container-custom mt-16">
-        <div className="grid gap-8 lg:grid-cols-2">
+      <section className="container-custom mt-8 sm:mt-12 md:mt-16">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
           {SERVICES.map((service, idx) => (
-            <div key={idx} className="flex flex-col rounded-2xl bg-white p-8 shadow-md border border-gray-100 hover:border-orange-200 transition-all">
-              <div className="mb-6 flex items-center gap-5">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+            <div key={idx} className="flex flex-col rounded-2xl bg-white p-5 sm:p-6 md:p-8 shadow-md border border-gray-100 hover:border-orange-200 transition-all">
+              <div className="mb-4 sm:mb-6 flex items-center gap-4 sm:gap-5">
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                   {service.icon}
                 </div>
-                <h2 className="text-2xl font-bold text-secondary transition-colors">{service.title}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-secondary transition-colors">{service.title}</h2>
               </div>
-              <p className="mb-6 text-gray-600">{service.description}</p>
+              <p className="mb-6 text-sm sm:text-base text-gray-600">{service.description}</p>
               
               <div className="mt-auto grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 border-t border-gray-100 pt-6">
                 <div>
@@ -130,6 +136,38 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <section className="container-custom mt-16">
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm sm:p-10">
+          <h2 className="text-3xl font-bold text-secondary">
+            From component drawing to manufacturing plan
+          </h2>
+          <p className="mt-4 max-w-4xl leading-7 text-gray-600">
+            A useful CNC manufacturing discussion starts with the part drawing
+            or a clear specification. Identify the material and grade,
+            production quantity, critical dimensions and tolerances, required
+            finish, and any inspection or documentation needs. The part geometry
+            then informs whether turning, milling, VMC machining, or a
+            combination of processes is appropriate. Confirm the proposed scope
+            and quotation with the engineering team before production.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link
+              href="/capabilities"
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              Review capabilities and listed materials
+            </Link>
+            <Link
+              href="/quality"
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              Read about inspection stages
+            </Link>
+          </div>
+        </div>
+      </section>
+
      {/* OUR MACHINERY
 <section className="mt-24 bg-white py-16 border-t border-gray-200">
   <div className="container-custom text-center">

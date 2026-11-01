@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Car, Flame, Zap, Power, Hammer, CircleDot, Truck, Wrench, Factory, Cog, Building, Bot, UtensilsCrossed, Package, Shirt, Pill, HeartPulse, Plane, Sun, Cpu } from "lucide-react";
+import { ArrowRight, Car, Flame, Bot, UtensilsCrossed, Package, Shirt, Pill, Plane, Sun, Cpu } from "lucide-react";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries Served | Automotive, Aerospace, Energy, Medical",
-  description: "Discover global industries served by Shiv Shakti Industries: Automotive & Mobility, Electrical & Electronics, Renewable Energy, Aerospace & Defence, Oil & Gas, and Pharma.",
-  alternates: {
-    canonical: "/industries",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Industries Served by Our CNC Machining Company",
+  description:
+    "Explore the automotive, electrical, renewable energy, aerospace, oil and gas, pharmaceutical, textile, and industrial sectors listed by Shiv Shakti Industries.",
+  path: "/industries",
+});
 
 const INDUSTRIES = [
   {
@@ -96,12 +96,13 @@ const INDUSTRIES = [
 
 export default function IndustriesPage() {
   return (
-    <main className="bg-gray-50 pt-24 pb-24 min-h-screen">
+    <main className="bg-gray-50 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 min-h-screen">
+      <Breadcrumbs items={[{ label: "Industries", href: "/industries" }]} />
       {/* Header */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">Industries We Serve</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">Industries We Serve</h1>
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-400">
             SHIV SHAKTI INDUSTRIES is committed to delivering precision-engineered solutions that
 meet the demanding standards of a broad spectrum of industrial sectors.
           </p>
@@ -109,18 +110,25 @@ meet the demanding standards of a broad spectrum of industrial sectors.
       </section>
 
       {/* Industries Grid */}
-      <section className="container-custom mt-16">
-        <div className="grid gap-8 lg:grid-cols-2">
+      <section className="container-custom mt-8 sm:mt-12 md:mt-16">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
           {INDUSTRIES.map((industry, idx) => (
-            <div key={idx} className="group flex flex-col rounded-2xl bg-white p-8 shadow-md border border-gray-100 hover:border-orange-200 transition-all">
+            <div key={idx} className="group flex flex-col rounded-2xl bg-white p-5 sm:p-6 md:p-8 shadow-md border border-gray-100 hover:border-orange-200 transition-all">
               <div className="overflow-hidden rounded-3xl border border-gray-100">
-                <Image src={industry.img} width={900} height={520} alt={industry.title} className="h-52 w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                <Image
+                  src={industry.img}
+                  width={900}
+                  height={520}
+                  sizes="(max-width: 1023px) calc(100vw - 80px), (max-width: 1456px) calc(50vw - 72px), 628px"
+                  alt={industry.title}
+                  className="h-44 sm:h-52 w-full object-cover transition-all duration-300 group-hover:scale-105"
+                />
               </div>
-              <div className="mb-6 flex items-center gap-4 mt-6">
-                <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10">
+              <div className="mb-4 sm:mb-6 flex items-center gap-3 sm:gap-4 mt-5 sm:mt-6">
+                <div className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl bg-primary/10 shrink-0">
                   {industry.icon}
                 </div>
-                <h2 className="text-2xl font-bold text-secondary transition-colors group-hover:text-orange-500">{industry.title}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-secondary transition-colors group-hover:text-orange-500">{industry.title}</h2>
               </div>
               
               <div className="grid gap-4 border-t border-gray-100 pt-6">

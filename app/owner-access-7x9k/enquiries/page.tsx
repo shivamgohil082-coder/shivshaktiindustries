@@ -3,20 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  Inbox,
   Search,
-  Filter,
   FileDown,
   Trash2,
   AlertTriangle,
   Loader2,
-  Mail,
-  Phone,
   Building2,
   Paperclip,
-  CheckCircle2,
-  Clock,
-  Send,
   X,
   ExternalLink,
 } from "lucide-react";

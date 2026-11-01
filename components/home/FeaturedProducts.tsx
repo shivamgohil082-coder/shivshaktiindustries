@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Container from "@/components/common/Container";
 import SectionTitle from "@/components/common/SectionTitle";
 import Button from "@/components/common/Button";
@@ -31,15 +32,15 @@ key={product.id}
 className="overflow-hidden rounded-2xl bg-white shadow-xl transition hover:-translate-y-2 hover:shadow-2xl"
 >
 
-<img
-
+<div className="relative h-64 w-full">
+<Image
 src={product.image}
-
 alt={product.name}
-
-className="h-64 w-full object-cover"
-
+fill
+sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+className="object-cover"
 />
+</div>
 
 <div className="p-6">
 

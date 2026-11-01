@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Link from "next/link";
 import {
@@ -7,10 +8,20 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  Gauge,
   Layers,
   X,
 } from "lucide-react";
+
+function decodeEntities(str?: string): string {
+  if (!str) return "";
+  return str
+    .replace(/&amp;#x2F;/gi, "/")
+    .replace(/&#x2F;/gi, "/")
+    .replace(/&amp;amp;/gi, "&")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#039;/gi, "'");
+}
 
 export interface ExpandableProduct {
   id: number | string;
@@ -254,10 +265,12 @@ export default function ExpandableProductGallery({
                 } bg-neutral-900`}
               >
                 {/* Background Image */}
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
                   loading={index < 3 ? "eager" : "lazy"}
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 70vw"
                   className={`absolute inset-0 h-full w-full object-cover ${imageTransitionClass} ${
                     isActive ? "scale-105" : "scale-100 group-hover:scale-105"
                   }`}
@@ -303,15 +316,9 @@ export default function ExpandableProductGallery({
                     </div>
 
                     <div className="flex items-center gap-2 transition-all duration-700 animate-fadeIn">
-                      {product.tolerance && (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-xs font-mono font-bold text-orange-400">
-                          <Gauge size={13} className="text-orange-400" />
-                          {product.tolerance}
-                        </span>
-                      )}
-                      <span className="hidden xl:inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-gray-300">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-gray-300">
                         <Layers size={13} className="text-gray-400" />
-                        {product.category || "CNC Machined"}
+                        {decodeEntities(product.category) || "CNC Machined"}
                       </span>
                     </div>
                   </div>
@@ -324,18 +331,13 @@ export default function ExpandableProductGallery({
                       {/* Sub-badge / Process */}
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="px-3 py-1 rounded-md bg-orange-600/90 text-white text-[11px] font-black uppercase tracking-wider shadow">
-                          {product.process || product.category || "Precision CNC"}
+                          {decodeEntities(product.process || product.category || "Precision CNC")}
                         </span>
-                        {product.material && (
-                          <span className="px-3 py-1 rounded-md bg-white/10 backdrop-blur-md border border-white/15 text-gray-200 text-[11px] font-bold tracking-wider">
-                            {product.material}
-                          </span>
-                        )}
                       </div>
 
                       {/* Main Title */}
                       <h3 className="text-2xl lg:text-3xl font-black uppercase text-white tracking-tight leading-tight group-hover:text-orange-400 transition-colors">
-                        {product.name}
+                        {decodeEntities(product.name)}
                       </h3>
 
                     </div>
@@ -370,10 +372,12 @@ export default function ExpandableProductGallery({
                 } bg-neutral-900`}
               >
                 {/* Background Image */}
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
                   loading="lazy"
+                  fill
+                  sizes="90vw"
                   className={`absolute inset-0 h-full w-full object-cover ${imageTransitionClass} ${
                     isActive ? "scale-105" : "scale-100"
                   }`}
@@ -388,7 +392,7 @@ export default function ExpandableProductGallery({
                         {numberLabel}
                       </div>
                       <span className="text-sm font-bold text-white line-clamp-1">
-                        {product.name}
+                        {decodeEntities(product.name)}
                       </span>
                     </div>
                     <ChevronRight size={18} className="text-gray-400 shrink-0" />
@@ -400,29 +404,17 @@ export default function ExpandableProductGallery({
                       <div className="h-8 w-8 rounded-full bg-orange-600 text-white font-mono text-xs font-bold flex items-center justify-center shadow">
                         {numberLabel}
                       </div>
-                      {product.tolerance && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-black/60 text-orange-400 text-[11px] font-mono font-bold border border-white/15">
-                          <Gauge size={12} />
-                          {product.tolerance}
-                        </span>
-                      )}
                     </div>
 
                     <div className="space-y-3">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
-                          {product.process || product.category}
+                          {decodeEntities(product.process || product.category)}
                         </span>
                         <h3 className="text-lg font-black uppercase text-white leading-tight line-clamp-2 mt-0.5">
-                          {product.name}
+                          {decodeEntities(product.name)}
                         </h3>
                       </div>
-
-                      {product.material && (
-                        <p className="text-xs text-gray-300 line-clamp-1">
-                          <strong className="text-white">Material:</strong> {product.material}
-                        </p>
-                      )}
 
                     </div>
                   </div>
@@ -471,10 +463,12 @@ export default function ExpandableProductGallery({
             </button>
 
             <div className="flex items-start gap-4 mb-6">
-              <div className="h-16 w-16 rounded-2xl overflow-hidden border border-white/10 shrink-0 bg-black">
-                <img
+              <div className="relative h-16 w-16 rounded-2xl overflow-hidden border border-white/10 shrink-0 bg-black">
+                <Image
                   src={modalProduct.image}
                   alt={modalProduct.name}
+                  fill
+                  sizes="64px"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -483,7 +477,7 @@ export default function ExpandableProductGallery({
                   {modalProduct.category || "CNC Component"}
                 </span>
                 <h3 className="text-xl font-black uppercase text-white leading-snug">
-                  {modalProduct.name}
+                  {decodeEntities(modalProduct.name)}
                 </h3>
               </div>
             </div>
@@ -493,7 +487,7 @@ export default function ExpandableProductGallery({
                 <div key="spec-tolerance" className="p-3 rounded-xl bg-white/5 border border-white/10">
                   <span className="block text-gray-400 font-semibold mb-1">Micro-Tolerance</span>
                   <span className="font-mono font-bold text-orange-400 text-sm">
-                    {modalProduct.tolerance}
+                    {decodeEntities(modalProduct.tolerance)}
                   </span>
                 </div>
               )}
@@ -501,7 +495,7 @@ export default function ExpandableProductGallery({
                 <div key="spec-material" className="p-3 rounded-xl bg-white/5 border border-white/10">
                   <span className="block text-gray-400 font-semibold mb-1">Standard Materials</span>
                   <span className="font-medium text-gray-200">
-                    {modalProduct.material}
+                    {decodeEntities(modalProduct.material)}
                   </span>
                 </div>
               )}
@@ -509,7 +503,7 @@ export default function ExpandableProductGallery({
                 <div key="spec-process" className="p-3 rounded-xl bg-white/5 border border-white/10">
                   <span className="block text-gray-400 font-semibold mb-1">Machining Process</span>
                   <span className="font-medium text-gray-200">
-                    {modalProduct.process}
+                    {decodeEntities(modalProduct.process)}
                   </span>
                 </div>
               )}

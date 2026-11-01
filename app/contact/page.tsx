@@ -315,7 +315,10 @@ export default function ContactPage() {
           website: "",
         });
       } else {
-        setError(data.error || "Something went wrong.");
+        const referenceMessage = data.reference
+          ? ` Reference: ${data.reference}.`
+          : "";
+        setError(`${data.error || "Something went wrong."}${referenceMessage}`);
       }
     } catch {
       setError("Failed to send message. Please try again.");
@@ -325,7 +328,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="bg-gray-50 pt-24 pb-24 min-h-screen relative">
+    <main className="bg-gray-50 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 min-h-screen relative">
       {/* WhatsApp Interactive Modal */}
       {showWhatsApp && (
         <WhatsAppModal
@@ -335,13 +338,13 @@ export default function ContactPage() {
       )}
 
       {/* ── Header ───────────────────────────────────── */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
           
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">
             Contact Us
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-400">
             Visit our factory, send us an RFQ inquiry, or connect instantly with
             our sales engineering team via WhatsApp.
           </p>
@@ -349,7 +352,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Main Grid ────────────────────────────────── */}
-      <section className="container-custom mt-16">
+      <section className="container-custom mt-8 sm:mt-12 md:mt-16">
         <div className="grid gap-12 lg:grid-cols-2">
           {/* LEFT — Info Cards */}
           <div className="flex flex-col gap-6">
@@ -568,14 +571,14 @@ export default function ContactPage() {
           </div>
 
           {/* RIGHT — Inquiry Form */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-xl flex flex-col justify-between">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 md:p-8 shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="mb-2 text-3xl font-bold text-secondary">
+                  <h2 className="mb-2 text-2xl sm:text-3xl font-bold text-secondary">
                     Send an Inquiry
                   </h2>
-                  <p className="mb-8 text-gray-500">
+                  <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-500">
                     Fill out the form below or start an instant conversation on
                     WhatsApp.
                   </p>

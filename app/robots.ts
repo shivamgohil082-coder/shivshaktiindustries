@@ -1,14 +1,18 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
+import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shivshaktiindustries.org';
+  const ownerAccessPath =
+    process.env.OWNER_ACCESS_PATH || "/owner-access-7x9k";
 
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/'],
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", `${ownerAccessPath}/`],
+      },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+  };
 }

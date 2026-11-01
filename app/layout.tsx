@@ -1,16 +1,23 @@
-import "@fontsource/space-grotesk";
-import "@fontsource/inter";
-import "@fontsource/sora";
 import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import MobileBottomBar from "@/components/mobile/MobileBottomBar";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
+import { serializeJsonLd, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shivshaktiindustries.org';
+const spaceGrotesk = localFont({
+  src: "../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+  preload: true,
+  variable: "--font-space-grotesk",
+});
 
 export const viewport: Viewport = {
   themeColor: "#aa0000",
@@ -22,11 +29,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "SHIV SHAKTI INDUSTRIES | Precision CNC Machining & VMC Manufacturing",
+    default: "Precision CNC Machining Manufacturer | Vadodara, India",
     template: "%s | Shiv Shakti Industries",
   },
   description:
-    "Leading manufacturer of high-precision CNC turned parts, 4-Axis VMC machined components, brass hydraulic manifolds, and precision engineering assemblies in Makarpura GIDC, Vadodara, Gujarat.",
+    "Shiv Shakti Industries manufactures precision CNC turned components, VMC machined parts, and custom engineering assemblies in Vadodara, Gujarat, India.",
   keywords: [
     "CNC Machining Vadodara",
     "VMC Machining Gujarat",
@@ -54,9 +61,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "SHIV SHAKTI INDUSTRIES | Precision CNC Machining & VMC Engineering",
+    title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
     description:
-      "Premier CNC, VMC & Swiss-Turned Engineering Components manufacturer. Micron-level tolerances (±0.003mm) across Automotive, Energy, and Aerospace sectors.",
+      "Precision CNC turned components, VMC machined parts, and custom engineering assemblies manufactured in Vadodara, Gujarat, India.",
     url: SITE_URL,
     siteName: "Shiv Shakti Industries",
     locale: "en_IN",
@@ -72,8 +79,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SHIV SHAKTI INDUSTRIES | Precision CNC Machining",
-    description: "Precision CNC Machining, VMC & Engineering Components in Vadodara, Gujarat.",
+    title: "Precision CNC Machining Manufacturer | Shiv Shakti Industries",
+    description:
+      "Precision CNC turned components, VMC machined parts, and custom engineering assemblies in Vadodara, India.",
     images: ["/images/logo/logo3.jpeg"],
   },
   robots: {
@@ -93,84 +101,41 @@ const structuredSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["ManufacturingPlant", "LocalBusiness"],
+      "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: "Shiv Shakti Industries",
       url: SITE_URL,
       logo: `${SITE_URL}/images/logo/logo3.jpeg`,
-      image: `${SITE_URL}/images/logo/logo3.jpeg`,
       description:
-        "Precision CNC & VMC Machining, Custom Sheet Metal Works, Parts Assembly, and Engineering Solutions in Makarpura GIDC, Vadodara.",
+        "Precision CNC and VMC machining, custom sheet metal works, parts assembly, and engineering solutions in Makarpura GIDC, Vadodara, Gujarat, India.",
       telephone: "+91 92136 62579",
       email: "info@shivshaktiindustries.org",
-      priceRange: "$$",
-      currenciesAccepted: "INR, USD, EUR",
-      paymentAccepted: "Bank Transfer, Wire Transfer, Letter of Credit",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "C1-677, G.I.D.C Estate, Makarpura",
+        streetAddress: "C1-677, Makarpura GIDC",
         addressLocality: "Vadodara",
         addressRegion: "Gujarat",
         postalCode: "390010",
         addressCountry: "IN",
       },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 22.2519,
-        longitude: 73.1972,
-      },
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          opens: "08:30",
-          closes: "19:30",
-        },
-      ],
       contactPoint: [
         {
           "@type": "ContactPoint",
           telephone: "+91 92136 62579",
           contactType: "sales and quotations",
           email: "rfq@shivshaktiindustries.org",
-          areaServed: ["IN", "US", "DE", "GB", "AE"],
-          availableLanguage: ["en", "hi", "gu"],
         },
         {
           "@type": "ContactPoint",
           telephone: "+91 92136 62579",
-          contactType: "customer service and general inquiries",
+          contactType: "general inquiries",
           email: "info@shivshaktiindustries.org",
-          areaServed: ["IN", "US", "DE", "GB", "AE"],
-          availableLanguage: ["en", "hi", "gu"],
         },
       ],
-      areaServed: {
-        "@type": "Country",
-        name: "Worldwide",
-      },
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "CNC & VMC Precision Manufacturing Capabilities",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "CNC Turning Center Operations",
-              description: "Precision CNC turning centers machining 4mm to 550mm diameter components.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Vertical Machining Center (VMC) Milling",
-              description: "Multi-axis VMC milling for intricate components up to 3m x 2m x 1m.",
-            },
-          },
-        ],
-      },
+      sameAs: [
+        "https://www.instagram.com/shiv.shakti.industries/",
+        "https://www.linkedin.com/company/shivshaktiindustries/",
+      ],
     },
     {
       "@type": "WebSite",
@@ -191,11 +156,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${spaceGrotesk.className} scroll-smooth`}
+    >
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredSchema),
+          }}
         />
       </head>
       <body className="min-h-screen bg-white text-[#1a1a1a] antialiased selection:bg-primary selection:text-white">
@@ -206,6 +176,7 @@ export default function RootLayout({
             {children}
           </div>
           <Footer key="app-footer" />
+          <MobileBottomBar key="app-mobile-bar" />
         </SmoothScroll>
       </body>
     </html>

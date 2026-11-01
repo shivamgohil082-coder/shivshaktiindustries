@@ -39,12 +39,15 @@ export default function Preloader() {
   if (isLoaded) return null;
 
   return (
-    <div className="preloader-container fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950">
-      <div className="flex flex-col items-center">
-        <h1 className="preloader-text flex translate-y-4 items-center text-4xl font-bold text-white opacity-0">
+    <div
+      aria-hidden="true"
+      className="preloader-container fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950"
+    >
+      <div className="flex flex-col items-center px-4 text-center">
+        <p className="preloader-text flex flex-wrap justify-center translate-y-4 items-center text-2xl sm:text-3xl md:text-4xl font-bold text-white opacity-0">
           <span className="mr-2 text-primary">SHIV SHAKTI</span> INDUSTRIES
-        </h1>
-        <p className="preloader-text mt-4 translate-y-4 text-sm tracking-widest text-zinc-400 opacity-0">
+        </p>
+        <p className="preloader-text mt-3 translate-y-4 text-xs sm:text-sm tracking-widest text-zinc-400 opacity-0">
           INITIALIZING FACTORY SYSTEMS...
         </p>
       </div>

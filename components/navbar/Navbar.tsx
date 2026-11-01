@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { useState } from "react";
 import { navLinks } from "./NavLinks";
 import MobileMenu from "./MobileMenu";
@@ -19,17 +20,20 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-3"
           >
-            <img
+            <Image
               src="/images/logo/logo3.jpeg"
               alt="Shiv Shakti Industries"
+              width={64}
+              height={64}
+              priority
               className="h-14 md:h-16 w-auto object-contain"
             />
 
-            <div className="flex flex-col justify-center">
-              <h1 className="text-xl md:text-3xl font-bold text-black leading-none tracking-tight">
+            <div className="flex flex-col justify-center min-w-0">
+              <p className="text-lg sm:text-2xl md:text-3xl font-bold text-black leading-none tracking-tight truncate">
                 Shiv Shakti Industries
-              </h1>
-              <p className="text-xs md:text-sm text-gray-700 font-medium mt-1">
+              </p>
+              <p className="text-[11px] sm:text-xs md:text-sm text-gray-700 font-medium mt-1 truncate">
                 Precision Engineering Solutions
               </p>
             </div>
@@ -58,13 +62,23 @@ export default function Navbar() {
             })}
           </nav>
 
-          <button
-            className="lg:hidden p-2 rounded-lg text-secondary hover:text-primary hover:bg-gray-100 transition-colors"
-            onClick={() => setOpen(true)}
-            aria-label="Toggle navigation menu"
-          >
-            <Menu size={26} />
-          </button>
+          <div className="flex items-center gap-1.5 lg:hidden">
+            <a
+              href="tel:+919213662579"
+              className="p-2 rounded-lg text-primary hover:bg-red-50 active:scale-95 transition-all"
+              aria-label="Call Shiv Shakti Industries"
+            >
+              <Phone size={22} />
+            </a>
+
+            <button
+              className="p-2 rounded-lg text-secondary hover:text-primary hover:bg-gray-100 transition-colors"
+              onClick={() => setOpen(true)}
+              aria-label="Toggle navigation menu"
+            >
+              <Menu size={26} />
+            </button>
+          </div>
         </div>
       </header>
 

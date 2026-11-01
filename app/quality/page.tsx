@@ -1,19 +1,14 @@
-import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import { CheckCircle, ShieldCheck, FileText, Settings, Factory, Award, Cog, Hammer, Layers, Quote } from "lucide-react";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { CheckCircle, ShieldCheck, FileText, Settings, Factory, Award, Quote } from "lucide-react";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Quality Assurance & Metrology Infrastructure | Shiv Shakti Industries",
-  description: "ISO 9001:2015 compliant 4-stage quality control, optical metrology, material test certificates (MTC), and surface finishing capabilities in Vadodara.",
-  alternates: {
-    canonical: "/quality",
-  },
-};
-
-import InspectionLabDynamic from "@/components/quality/InspectionLabDynamic";
+export const metadata = createPageMetadata({
+  title: "Quality Inspection and Manufacturing Infrastructure",
+  description:
+    "Learn about incoming material checks, in-process inspection, final inspection, and pre-dispatch checks described by Shiv Shakti Industries in Vadodara.",
+  path: "/quality",
+});
 
 const INSPECTION_STAGES =  [
   {
@@ -40,12 +35,13 @@ const INSPECTION_STAGES =  [
 
 export default function QualityPage() {
   return (
-    <main className="bg-gray-50 pt-24 pb-24 min-h-screen">
+    <main className="bg-gray-50 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 min-h-screen">
+      <Breadcrumbs items={[{ label: "Quality", href: "/quality" }]} />
       {/* Header */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">Quality & Infrastructure</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">Quality & Infrastructure</h1>
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-400">
             
           </p>
         </div>
@@ -153,7 +149,13 @@ export default function QualityPage() {
           ].map((m, i) => (
             <div key={i} className="flex bg-gray-50/50 rounded-2xl overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
               <div className="w-2/5 relative min-h-[200px]">
-                <Image src={m.img} alt={m.name} fill className="object-cover" />
+                <Image
+                  src={m.img}
+                  alt={m.name}
+                  fill
+                  sizes="(max-width: 1023px) 38vw, 20vw"
+                  className="object-cover"
+                />
               </div>
               <div className="w-3/5 p-6 flex flex-col justify-center">
                 <h4 className="text-xl font-bold text-secondary mb-4">{m.name}</h4>
@@ -177,7 +179,13 @@ export default function QualityPage() {
   ].map((m, i) => (
     <div key={i} className="flex bg-gray-50/50 rounded-2xl overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
       <div className="w-2/5 relative min-h-[200px]">
-        <Image src={m.img} alt={m.name} fill className="object-cover" />
+        <Image
+          src={m.img}
+          alt={m.name}
+          fill
+          sizes="(max-width: 1023px) 38vw, 20vw"
+          className="object-cover"
+        />
       </div>
       <div className="w-3/5 p-6 flex flex-col justify-center">
         <h4 className="text-xl font-bold text-secondary mb-4">{m.name}</h4>
@@ -208,7 +216,13 @@ export default function QualityPage() {
           ].map((m, i) => (
             <div key={i} className="flex bg-gray-50/50 rounded-2xl overflow-hidden border border-gray-200 transition-all hover:shadow-lg">
               <div className="w-2/5 relative min-h-[200px]">
-                <Image src={m.img} alt={m.name} fill className="object-cover" />
+                <Image
+                  src={m.img}
+                  alt={m.name}
+                  fill
+                  sizes="(max-width: 1023px) 38vw, 20vw"
+                  className="object-cover"
+                />
               </div>
               <div className="w-3/5 p-6 flex flex-col justify-center">
                 <h4 className="text-xl font-bold text-secondary mb-4">{m.name}</h4>
@@ -371,37 +385,37 @@ export default function QualityPage() {
         </div>
       </section>
 {/* Machinery Infrastructure */}
-      <section className="container-custom mt-24">
-        <div className="grid gap-12 lg:grid-cols-2">
+      <section className="container-custom mt-12 sm:mt-16 md:mt-24">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
           {/* R&D  */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-10 shadow-sm">
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-8 md:p-10 shadow-sm">
+            <div className="mb-4 sm:mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
               <Award className="text-primary" size={28} />
             </div>
-            <h2 className="text-3xl font-bold text-secondary mb-4">Research & Development</h2>
-            <p className="font-bold text-primary mb-4 uppercase tracking-wider text-sm">Innovation drives our growth.</p>
-            <p className="text-gray-600 leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl font-bold text-secondary mb-3 sm:mb-4">Research & Development</h2>
+            <p className="font-bold text-primary mb-3 sm:mb-4 uppercase tracking-wider text-xs sm:text-sm">Innovation drives our growth.</p>
+            <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
               Our Research & Development team continuously explores advanced manufacturing techniques, tooling improvements, machining optimization, and process enhancements to deliver superior products with higher efficiency and improved productivity.
             </p>
           </div>
 
           {/* Testimonial */}
-          <div className="rounded-2xl border border-gray-800 bg-secondary p-10 shadow-xl text-white">
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10">
+          <div className="rounded-2xl border border-gray-800 bg-secondary p-5 sm:p-8 md:p-10 shadow-xl text-white">
+            <div className="mb-4 sm:mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10">
               <Quote className="text-white" size={28} />
             </div>
-            <h2 className="text-3xl font-bold mb-4">Client Testimonial</h2>
-            <p className="font-bold text-primary mb-4 uppercase tracking-wider text-sm">Building Trust Through Precision</p>
-            <blockquote className="text-gray-300 italic leading-relaxed text-lg border-l-4 border-primary pl-6">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Client Testimonial</h2>
+            <p className="font-bold text-primary mb-3 sm:mb-4 uppercase tracking-wider text-xs sm:text-sm">Building Trust Through Precision</p>
+            <blockquote className="text-gray-300 italic leading-relaxed text-base sm:text-lg border-l-4 border-primary pl-4 sm:pl-6">
               "Our clients value us for our commitment to quality, precision, and dependable service. By consistently meeting technical requirements and delivery commitments, SHIV SHAKTI INDUSTRIES has built lasting relationships founded on trust, performance, and customer satisfaction."
             </blockquote>
           </div>
         </div>
       </section>
       {/* Advanced Metrology & Documentation */}
-      <section className="container-custom mt-24">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div className="rounded-2xl bg-white p-10 border border-gray-200 shadow-sm">
+      <section className="container-custom mt-12 sm:mt-16 md:mt-24">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
+          <div className="rounded-2xl bg-white p-5 sm:p-8 md:p-10 border border-gray-200 shadow-sm">
             <h3 className="text-2xl font-bold text-secondary mb-6">Measurement Equipment</h3>
             <ul className="space-y-4">
               {['Digital Vernier Calipers',
@@ -472,4 +486,3 @@ export default function QualityPage() {
     </main>
   );
 }
-

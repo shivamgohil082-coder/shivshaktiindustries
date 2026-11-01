@@ -12,11 +12,8 @@ import {
   ArrowRight,
   Database,
   ExternalLink,
-  Layers,
   Sparkles,
   TrendingUp,
-  MessageSquareText,
-  UserRound,
   Banknote,
 } from "lucide-react";
 

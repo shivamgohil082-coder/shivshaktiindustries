@@ -111,23 +111,23 @@ export default function ProductViewer() {
   const [showDimensions, setShowDimensions] = useState(false);
 
   return (
-    <div className="relative h-[600px] w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
-      <div className="absolute right-4 top-4 z-10 flex flex-col gap-2">
+    <div className="relative h-[360px] sm:h-[460px] md:h-[560px] w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
+      <div className="absolute right-3 top-3 z-10 flex flex-wrap sm:flex-col gap-1.5 justify-end">
         <button
           onClick={() => setWireframe(!wireframe)}
-          className={`glass px-4 py-2 text-xs font-bold uppercase transition ${wireframe ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
+          className={`glass px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold uppercase rounded-lg transition ${wireframe ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
         >
           Wireframe
         </button>
         <button
           onClick={() => setExploded(!exploded)}
-          className={`glass px-4 py-2 text-xs font-bold uppercase transition ${exploded ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
+          className={`glass px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold uppercase rounded-lg transition ${exploded ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
         >
           Exploded View
         </button>
         <button
           onClick={() => setShowDimensions(!showDimensions)}
-          className={`glass px-4 py-2 text-xs font-bold uppercase transition ${showDimensions ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
+          className={`glass px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold uppercase rounded-lg transition ${showDimensions ? "bg-primary text-white" : "text-zinc-400 hover:text-white"}`}
         >
           Dimensions
         </button>

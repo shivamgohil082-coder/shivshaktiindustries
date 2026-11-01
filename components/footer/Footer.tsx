@@ -59,19 +59,30 @@ export default function Footer() {
             Products
           </h3>
           <ul className="space-y-2 text-sm text-gray-300">
-            <li>CNC Machined Components</li>
-            <li>CNC Turned Components</li>
-            <li>Sheet Metal Parts</li>
-            <li>Fabricated Assemblies</li>
-            <li>Plastic Injection Moulded Parts</li>
-            <li>Custom-Made Assemblies</li>
-            <li>Metal Castings</li>
+            {[
+              "CNC Machined Components",
+              "CNC Turned Components",
+              "Sheet Metal Parts",
+              "Fabricated Assemblies",
+              "Plastic Injection Moulded Parts",
+              "Custom-Made Assemblies",
+              "Metal Castings",
+            ].map((label) => (
+              <li key={label}>
+                <Link
+                  href="/products"
+                  className="hover:text-white hover:underline"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
       </div>
 
-      <div className="border-t border-gray-700 py-5 text-center text-sm">
+      <div className="border-t border-gray-700 py-5 pb-20 md:pb-5 text-center text-sm">
         © 2026 SHIV SHAKTI INDUSTRIES. All Rights Reserved.
       </div>
     </footer>

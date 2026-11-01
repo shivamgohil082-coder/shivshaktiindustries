@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Drill, Settings, Ruler, Box, Gauge, Layers } from "lucide-react";
+import { ArrowRight, Drill, Settings, Ruler, Box, Layers } from "lucide-react";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Manufacturing Capabilities & CNC Fleet | Shiv Shakti Industries",
-  description: "Comprehensive overview of our CNC machining centers, high-speed turning, maximum tolerances down to ±0.003mm, and certified precision metrology equipment in Vadodara.",
-  alternates: {
-    canonical: "/capabilities",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "CNC Machining Capabilities and Equipment",
+  description:
+    "Review Shiv Shakti Industries' listed CNC machining, turning, VMC, materials, and inspection capabilities in Vadodara.",
+  path: "/capabilities",
+});
 
 const MACHINES = [
   {
@@ -48,12 +48,13 @@ const MATERIALS = [
 
 export default function CapabilitiesPage() {
   return (
-    <main className="bg-gray-50 pt-24 pb-24 min-h-screen">
+    <main className="bg-gray-50 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-24 min-h-screen">
+      <Breadcrumbs items={[{ label: "Capabilities", href: "/capabilities" }]} />
       {/* Header */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">Machining Capabilities</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">Machining Capabilities</h1>
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-400">
             A comprehensive index of our precision machinery, technical tolerances, and raw material expertise.
           </p>
         </div>
@@ -101,13 +102,13 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* Materials & Secondary Operations */}
-      <section className="container-custom mt-20">
-        <div className="grid gap-12 lg:grid-cols-2">
+      <section className="container-custom mt-12 sm:mt-16 md:mt-20">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
           
-          <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 md:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
               <Box className="text-primary h-8 w-8" />
-              <h2 className="text-2xl font-bold text-secondary">Machinable Materials</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-secondary">Machinable Materials</h2>
             </div>
             <div className="space-y-6">
               {MATERIALS.map((mat, idx) => (
@@ -119,7 +120,7 @@ export default function CapabilitiesPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-secondary p-8 shadow-sm text-white">
+          <div className="rounded-2xl border border-gray-200 bg-secondary p-5 sm:p-6 md:p-8 shadow-sm text-white">
             <div className="flex items-center gap-3 mb-6">
               <Layers className="text-primary h-8 w-8" />
               <h2 className="text-2xl font-bold">Secondary Operations</h2>

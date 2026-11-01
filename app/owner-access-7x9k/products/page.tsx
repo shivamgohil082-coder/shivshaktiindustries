@@ -3,18 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  Package,
   PlusCircle,
   Search,
-  Filter,
   Eye,
   EyeOff,
   Edit,
   Trash2,
   AlertTriangle,
   Loader2,
-  ExternalLink,
-  Check,
 } from "lucide-react";
 
 interface Product {

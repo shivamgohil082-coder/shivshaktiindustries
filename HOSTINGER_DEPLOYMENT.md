@@ -59,8 +59,9 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER="info@shivshaktiindustries.org"
 SMTP_PASS="YourEmailPassword"
-SMTP_RFQ_EMAIL="rfq@shivshaktiindustries.org"
-SMTP_INFO_EMAIL="info@shivshaktiindustries.org"
+SMTP_RFQ_EMAIL="rfqssi@gmail.com"
+SMTP_INFO_EMAIL="infossi2512@gmail.com"
+SMTP_TO_EMAIL="rfqssi@gmail.com"
 SMTP_FROM_EMAIL='"Shiv Shakti Industries" <info@shivshaktiindustries.org>'
 ```
 

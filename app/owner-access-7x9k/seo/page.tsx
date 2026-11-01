@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Globe, Save, CheckCircle2, Loader2, Sparkles, ExternalLink } from "lucide-react";
+import { Save, CheckCircle2, Loader2, ExternalLink } from "lucide-react";
 
 interface SeoMeta {
   id: number;

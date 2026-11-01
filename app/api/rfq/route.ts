@@ -139,24 +139,31 @@ export async function POST(req: Request) {
       });
     }
 
+    const port = Number(process.env.SMTP_PORT) || 587;
+    const secure = process.env.SMTP_SECURE === 'true' || port === 465;
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true',
+      port,
+      secure,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
     });
 
     const rfqRecipient =
       process.env.SMTP_RFQ_EMAIL ||
-      process.env.SMTP_TO_EMAIL ||
-      'rfq@shivshaktiindustries.org';
+      'rfqssi@gmail.com';
 
     const mailOptions = {
       from:
-        process.env.SMTP_FROM_EMAIL ||
+        process.env.SMTP_RFQ_FROM_EMAIL ||
         '"Shiv Shakti Industries RFQ" <rfq@shivshaktiindustries.org>',
       to: rfqRecipient,
       replyTo: email.trim(),
@@ -165,9 +172,10 @@ export async function POST(req: Request) {
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222; max-width: 640px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #aa0000; color: #ffffff; padding: 20px 24px;">
             <h2 style="margin: 0; font-size: 22px;">New Request For Quotation (RFQ)</h2>
-            <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.9;">Shiv Shakti Industries — Target: ${rfqRecipient}</p>
+            <p style="margin: 4px 0 0; font-size: 13px; opacity: 0.9;">Shiv Shakti Industries — Target: rfq@shivshaktiindustries.org (${rfqRecipient})</p>
           </div>
           <div style="padding: 24px;">
+            <p style="margin-top: 0;"><strong>Official Channel:</strong> rfq@shivshaktiindustries.org | <strong>Delivered To:</strong> ${rfqRecipient}</p>
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
               <tr>
                 <td style="padding: 6px 0; color: #666; width: 140px;"><strong>Client Name:</strong></td>
@@ -200,11 +208,20 @@ export async function POST(req: Request) {
       attachments: attachment ? [attachment] : [],
     };
 
-    await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (emailError) {
+      console.error(
+        'RFQ email delivery failed for enquiry %s: %s',
+        recordedRfq.reference_no,
+        emailError instanceof Error ? emailError.message : 'Unknown error',
+      );
+    }
 
     return NextResponse.json({
       success: true,
       message: 'RFQ submitted successfully! Our engineering team will review your specifications.',
+      reference: recordedRfq.reference_no,
     });
   } catch (error) {
     console.error('RFQ API Internal Error:', error instanceof Error ? error.message : 'Unknown');

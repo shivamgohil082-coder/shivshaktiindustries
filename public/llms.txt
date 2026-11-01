@@ -1,0 +1,23 @@
+# Shiv Shakti Industries
+
+> Shiv Shakti Industries is a precision manufacturing business located in Makarpura GIDC, Vadodara, Gujarat, India. The website describes CNC turning, CNC milling, VMC machining, sheet metal work, assembly, and related engineering services.
+
+## Public pages
+
+- [Home](https://shivshaktiindustries.org/): Company overview and common CNC machining questions.
+- [Services](https://shivshaktiindustries.org/services): Listed manufacturing services and guidance for preparing a component enquiry.
+- [Products](https://shivshaktiindustries.org/products): Public component catalog. Product details reflect the current catalog and may change.
+- [Capabilities](https://shivshaktiindustries.org/capabilities): Listed machining capabilities and material groups.
+- [Quality](https://shivshaktiindustries.org/quality): Description of the site's stated inspection stages.
+- [Industries](https://shivshaktiindustries.org/industries): Industries listed on the website.
+- [About](https://shivshaktiindustries.org/about): Company overview.
+- [Contact](https://shivshaktiindustries.org/contact): Contact details and quotation enquiries.
+
+## Contact
+
+- Address: C1-677, Makarpura GIDC, Vadodara, 390010, Gujarat, India.
+- Phone: +91 92136 62579.
+- RFQ: rfq@shivshaktiindustries.org.
+- General enquiries: info@shivshaktiindustries.org.
+
+This file is a plain-text guide to public site content. Its presence does not guarantee crawling, indexing, or inclusion in AI-generated answers.

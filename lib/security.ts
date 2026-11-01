@@ -35,8 +35,7 @@ export function escapeHtml(str: unknown): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;")
-    .replace(/\//g, "&#x2F;");
+    .replace(/'/g, "&#039;");
 }
 
 /**

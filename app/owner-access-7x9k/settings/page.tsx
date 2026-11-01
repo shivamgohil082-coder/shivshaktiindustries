@@ -2,15 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  Settings,
-  Lock,
   Database,
   FileDown,
-  ShieldCheck,
   CheckCircle2,
   Loader2,
   Server,
-  AlertCircle,
   KeyRound,
 } from "lucide-react";
 

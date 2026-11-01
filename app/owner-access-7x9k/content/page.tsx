@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FileEdit, Save, CheckCircle2, Loader2, Sparkles, Building2 } from "lucide-react";
+import { Save, CheckCircle2, Loader2 } from "lucide-react";
 
 interface ContentBlock {
   id: number;

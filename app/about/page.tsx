@@ -1,33 +1,34 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us | Precision CNC Machine Shop Vadodara",
-  description: "Learn about Shiv Shakti Industries: 11+ years of manufacturing excellence, modern 4-axis/5-axis CNC & VMC machining infrastructure in Makarpura GIDC, Vadodara, Gujarat.",
-  alternates: {
-    canonical: "/about",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "About Our CNC Manufacturing Company",
+  description:
+    "Learn about Shiv Shakti Industries, a precision engineering and CNC machining company based in Makarpura GIDC, Vadodara, Gujarat.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
-    <main className="bg-white pt-24">
+    <main className="bg-white pt-16 sm:pt-20 md:pt-24">
+      <Breadcrumbs items={[{ label: "About", href: "/about" }]} />
       {/* Page Header */}
-      <section className="bg-secondary py-20 text-white">
+      <section className="bg-secondary py-12 sm:py-16 md:py-20 text-white">
         <div className="container-custom text-center">
-          <h1 className="text-5xl font-black uppercase tracking-tighter md:text-7xl">About Us</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight">About Us</h1>
           
         </div>
       </section>
 
       {/* Company Overview */}
-      <section className="py-24">
-        <div className="container-custom grid gap-12 lg:grid-cols-2 lg:items-center">
+      <section className="py-12 sm:py-16 md:py-24">
+        <div className="container-custom grid gap-8 sm:gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <span className="mb-4 inline-block font-bold uppercase tracking-widest text-primary">Welcome to SHIV SHAKTI INDUSTRIES</span>
-            <h2 className="mb-6 text-4xl font-bold text-secondary transition-colors duration-300 hover:text-orange-500">Leading Manufacturer of Precision Engineering Parts</h2>
+            <span className="mb-3 sm:mb-4 inline-block font-bold uppercase tracking-widest text-primary text-xs sm:text-sm">Welcome to SHIV SHAKTI INDUSTRIES</span>
+            <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl font-bold text-secondary transition-colors duration-300 hover:text-orange-500">Leading Manufacturer of Precision Engineering Parts</h2>
             <div className="mb-6 text-gray-600 leading-relaxed space-y-3">
               <p>• SHIV SHAKTI INDUSTRIES is a fast-growing precision engineering company with the objective of delivering world-class machining solutions for various industrial sectors.</p>
               <p>• We manufacture precision components according to customer drawings, technical specifications, samples, and customized requirements while maintaining the highest standards of quality and dimensional accuracy.</p>
@@ -47,14 +48,32 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-4">
             <div className="h-64 w-full overflow-hidden rounded-2xl bg-gray-200 relative">
-               <div className="absolute inset-0 bg-[url('/images/about/1.png')] bg-cover bg-center"></div>
+               <Image
+                 src="/images/about/1.png"
+                 alt="Shiv Shakti Industries manufacturing facility"
+                 fill
+                 sizes="(max-width: 1024px) 100vw, 50vw"
+                 className="object-cover"
+               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="h-48 w-full overflow-hidden rounded-2xl bg-gray-200 relative">
-                 <div className="absolute inset-0 bg-[url('/images/about/download.jpg')] bg-cover bg-center"></div>
+                 <Image
+                   src="/images/about/download.jpg"
+                   alt="Precision manufacturing equipment at Shiv Shakti Industries"
+                   fill
+                   sizes="(max-width: 1024px) 50vw, 25vw"
+                   className="object-cover"
+                 />
               </div>
               <div className="h-48 w-full overflow-hidden rounded-2xl bg-gray-200 relative">
-                 <div className="absolute inset-0 bg-[url('/images/about/2.jpg')] bg-cover bg-center"></div>
+                 <Image
+                   src="/images/about/2.jpg"
+                   alt="Industrial components manufactured by Shiv Shakti Industries"
+                   fill
+                   sizes="(max-width: 1024px) 50vw, 25vw"
+                   className="object-cover"
+                 />
               </div>
             </div>
           </div>

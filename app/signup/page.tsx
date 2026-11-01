@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import SectionTitle from "@/components/common/SectionTitle";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Customer Accounts | Shiv Shakti Industries",
+export const metadata = createPageMetadata({
+  title: "Customer Account Registration",
   description: "Customer account registration is not currently available.",
-};
+  path: "/signup",
+  noIndex: true,
+});
 
 export default function SignupPage() {
   return (

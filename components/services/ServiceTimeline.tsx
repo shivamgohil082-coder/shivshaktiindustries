@@ -10,7 +10,7 @@ import * as THREE from "three";
 function Spindle() {
   const spindleRef = useRef<THREE.Group>(null);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (spindleRef.current) {
       spindleRef.current.rotation.y += 0.5; // Fast rotation
     }
@@ -56,7 +56,7 @@ export default function ServiceTimeline() {
     
     if (timelineRef.current) {
       const items = gsap.utils.toArray(".timeline-item");
-      items.forEach((item: any, i) => {
+      items.forEach((item: any) => {
         gsap.fromTo(item, 
           { opacity: 0, x: -50 },
           { 

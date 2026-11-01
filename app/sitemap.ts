@@ -1,55 +1,45 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shivshaktiindustries.org';
-  const currentDate = new Date();
-
   return [
     {
-      url: `${baseUrl}`,
-      lastModified: currentDate,
+      url: SITE_URL,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/products`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/products`,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/services`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/capabilities`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/capabilities`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/industries`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/industries`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/quality`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/quality`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/about`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
+      url: `${SITE_URL}/contact`,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

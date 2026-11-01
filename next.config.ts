@@ -31,6 +31,14 @@ const securityHeaders = [
   },
 ];
 
+const mediaHeaders = [
+  ...securityHeaders,
+  {
+    key: "Cache-Control",
+    value: "public, max-age=604800, stale-while-revalidate=86400",
+  },
+];
+
 const nextConfig: NextConfig = {
   cleanDistDir: false,
   poweredByHeader: false,
@@ -51,6 +59,28 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/images/:path*",
+        headers: mediaHeaders,
+      },
+      {
+        source: "/videos/:path*",
+        headers: mediaHeaders,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/upload",
+        destination: "/contact",
+        statusCode: 301,
+      },
+      {
+        source: "/gallery",
+        destination: "/products",
+        statusCode: 301,
       },
     ];
   },

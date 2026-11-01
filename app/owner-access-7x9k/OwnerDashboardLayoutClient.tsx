@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Package,
@@ -15,7 +15,6 @@ import {
   X,
   ExternalLink,
   ShieldCheck,
-  User,
   Users,
   Banknote,
 } from "lucide-react";
@@ -26,7 +25,6 @@ interface LayoutProps {
 
 export default function OwnerDashboardLayoutClient({ children }: LayoutProps) {
   const pathname = usePathname();
-  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {

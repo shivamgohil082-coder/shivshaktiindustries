@@ -42,14 +42,14 @@ export default function Stats() {
   return (
     <section className="bg-secondary py-16 text-white">
       <div ref={containerRef} className="container-custom">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5 text-center">
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-3 lg:grid-cols-5 text-center">
           {STATS.map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center p-4">
-              <h3 className="mb-2 text-4xl font-bold text-primary md:text-5xl">
+            <div key={idx} className="flex flex-col items-center justify-center p-3 sm:p-4 last:col-span-2 md:last:col-span-1">
+              <h3 className="mb-2 text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
                 <span className="stat-value" data-target={stat.value}>0</span>
                 {stat.suffix}
               </h3>
-              <p className="text-sm font-semibold uppercase tracking-widest text-gray-400">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
                 {stat.label}
               </p>
             </div>
